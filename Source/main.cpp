@@ -25,17 +25,13 @@ void PrintRPN(Node *node) {
         std::cout << valNode->value << " ";
     } else if(node->type == EXP_3) {
         auto uNode = (UnaryNode*) node;
-        std::cout << "( ";
         PrintRPN(uNode->child);
         if(uNode->negated) std::cout << "n ";
-        std::cout << ") ";
     } else {
         auto bNode = (BinaryNode*) node;
-        std::cout << "( ";
         PrintRPN(bNode->left);
         PrintRPN(bNode->right);
         std::cout << OperatorFromExp(bNode->type) << " ";
-        std::cout << ") ";
     }
 
 }
